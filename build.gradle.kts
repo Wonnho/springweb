@@ -61,6 +61,12 @@ dependencies {
     // (예: Spring Boot에 내장된) 런타임 환경에서 제공해야 하므로
     // 'compileOnly'로 설정하는 것이 원칙입니다.
     compileOnly("javax:javaee-api:8.0.1")
+
+    //Mariadb driver
+    implementation ("org.mariadb.jdbc:mariadb-java-client:3.3.3")
+   // HikariCP
+    implementation("com.zaxxer:HikariCP:5.1.0")
+
 }
 
 
