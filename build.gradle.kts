@@ -23,6 +23,8 @@ dependencies {
     //implementation("org.springframework:spring-core:5.1.19")
     //implementation("org.springframework:spring-context:5.1.19")
 
+    implementation("org.springframework:spring-webmvc:5.1.19")
+
     // Spring Test
     //testImplementation("org.springframework:spring-test:5.1.19")
 
