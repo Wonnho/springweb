@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springweb.mapper.TimeMapper;
+import org.springweb.mapper.TimeMapper2;
 
 @Log4j2
 @ExtendWith(SpringExtension.class)
@@ -18,5 +19,13 @@ public class TimeMapperTest {
     @Test
     public void testGetTime() {
         log.info(timeMapper.getTime());
+    }
+
+    @Autowired(required = false)
+    private TimeMapper2 timeMapper2;
+
+    @Test
+    public void testNow() {
+        log.info(timeMapper2.getNow());
     }
 }
