@@ -26,9 +26,9 @@ dependencies {
     implementation("org.springframework:spring-webmvc:5.3.19")
 
     // Spring Test
-    testImplementation("org.springframework:spring-test:5.3.19")
     // -> 3. Aligned Spring Test (Replaces spring-boot-starter-test)
     //testImplementation("org.springframework:spring-test:${springVersion}")
+    testImplementation("org.springframework:spring-test:5.3.19")
 
     //lombok
     // 1. 메인 소스 컴파일 및 어노테이션 프로세싱
