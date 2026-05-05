@@ -16,17 +16,19 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 
     // 테스트 기능이 필요하다면 부트 스타터를 사용하는 것이 관리하기 편합니다.
-    testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.5")
+    //testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.5")
 
     // Spring Core & Context (이미 starter-web에 포함되어 있지만 명시적으로 추가할 때)
     // Due to springboot 3.2.5 version, conflict may arise
     //implementation("org.springframework:spring-core:5.1.19")
     //implementation("org.springframework:spring-context:5.1.19")
 
-    implementation("org.springframework:spring-webmvc:5.1.19")
+    implementation("org.springframework:spring-webmvc:5.3.19")
 
     // Spring Test
-    //testImplementation("org.springframework:spring-test:5.1.19")
+    testImplementation("org.springframework:spring-test:5.3.19")
+    // -> 3. Aligned Spring Test (Replaces spring-boot-starter-test)
+    //testImplementation("org.springframework:spring-test:${springVersion}")
 
     //lombok
     // 1. 메인 소스 컴파일 및 어노테이션 프로세싱
@@ -54,7 +56,7 @@ dependencies {
     // 1. Spring Web Starter에 버전 정보를 수동으로 추가합니다.
     // 기존: implementation("org.springframework.boot:spring-boot-starter-web")
     // 수정: 뒤에 버전을 명시합니다. (예: 3.2.5)
-    implementation("org.springframework.boot:spring-boot-starter-web:3.2.5")
+    //implementation("org.springframework.boot:spring-boot-starter-web:3.2.5")
 
 // 2. Java EE 8 API 전체 스펙 추가 (수동 입력)
     // 이 의존성은 빌드 시에만 필요하고 실제 실행 시에는
@@ -65,7 +67,17 @@ dependencies {
     //Mariadb driver
     implementation ("org.mariadb.jdbc:mariadb-java-client:3.3.3")
    // HikariCP
-    implementation("com.zaxxer:HikariCP:5.1.0")
+    //implementation("com.zaxxer:HikariCP:5.1.0")
+    implementation("com.zaxxer:HikariCP:4.0.3")
+
+    //spring jdbc
+    implementation("org.springframework:spring-jdbc:5.3.19")
+    //tx
+    implementation("org.springframework:spring-tx:5.3.19")
+
+     //mybatis
+    implementation("org.mybatis:mybatis:3.5.9")
+    implementation("org.mybatis:mybatis-spring:2.0.7")
 
 }
 
