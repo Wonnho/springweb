@@ -42,4 +42,10 @@ public class SampleController {
 
     }
 
+    @GetMapping("/except")
+    public void except(String sam,int age) {
+        log.info("name..." +sam);
+        log.info("age ............" +age);
+    }
+
 }
