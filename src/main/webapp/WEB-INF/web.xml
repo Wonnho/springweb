@@ -14,15 +14,16 @@
     </listener>
 
     <servlet>
-    <init-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/servlet-context.xml</param-value>
-    </init-param>
-
         <servlet-name>appServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 
-    <load-on-startup>1</load-on-startup>
+        <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/servlet-context.xml</param-value>
+    </init-param>
+        <load-on-startup>1</load-on-startup>
+
+
     </servlet>
 
     <servlet-mapping>
