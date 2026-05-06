@@ -3,6 +3,7 @@ package org.springweb.controller;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springweb.dto.TodoDTO;
 
 @Controller
 @RequestMapping("/todo")
@@ -27,8 +28,9 @@ public class TodoController {
     }
 
     @PostMapping("/register")
-    public void resgisterPost() {
+    public void resgisterPost(TodoDTO todoDTO) {
         log.info("POST todo register............");
+        log.info(todoDTO);
     }
 
     @GetMapping("/paramAuto2")
