@@ -2,10 +2,7 @@ package org.springweb.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/todo")
@@ -32,5 +29,14 @@ public class TodoController {
     @PostMapping("/register")
     public void resgisterPost() {
         log.info("POST todo register............");
+    }
+
+    @GetMapping("/paramAuto2")
+    public void paramAuto2(@RequestParam(name="name",defaultValue = "Guest") String name,
+                           @RequestParam(name="age",defaultValue = "22") int age) {
+        log.info("collect parameter by default");
+        log.info("name: " +name);
+        log.info("age: " +age);
+
     }
 }
