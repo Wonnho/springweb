@@ -1,5 +1,6 @@
 package org.springweb.controller;
 
+import com.sun.jna.platform.unix.X11;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,5 +48,6 @@ public class SampleController {
         log.info("name..." +sam);
         log.info("age ............" +age);
     }
+
 
 }
