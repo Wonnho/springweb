@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<configuration status="INFO">
+<Configuration status="INFO">
 
     <Appenders>
-        <!-- 콜솔 -->
+
+        <!-- 콘솔 출력 -->
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout charset="UTF-8" pattern="%d{hh:mm:ss} %5p [%c] %m%n"/>
+
+            <PatternLayout
+                    charset="UTF-8"
+                    pattern="%d{HH:mm:ss} %5p [%c] %m%n"/>
+
         </Console>
+
     </Appenders>
 
-    <loggers>
-        <logger name="org.springframework" level="INFO" additivity="false">
-            <appender-ref ref="console" />
-        </logger>
+    <Loggers>
 
-        <logger name="org.zerock" level="INFO" additivity="false">
-            <appender-ref ref="console" />
-        </logger>
+        <Logger
+                name="org.springframework"
+                level="INFO"
+                additivity="false">
 
-        <logger name="org.zerock.springex.mapper" level="TRACE" additivity="false">
-            <appender-ref ref="console" />
-        </logger>
-
-        <root level="INFO" additivity="false">
             <AppenderRef ref="console"/>
-        </root>
 
-    </loggers>
+        </Logger>
 
-</configuration>
+        <Logger
+                name="org.springweb"
+                level="INFO"
+                additivity="false">
+
+            <AppenderRef ref="console"/>
+
+        </Logger>
+
+        <Logger
+                name="org.springweb.mapper"
+                level="TRACE"
+                additivity="false">
+
+            <AppenderRef ref="console"/>
+
+        </Logger>
+
+        <Root level="INFO">
+
+            <AppenderRef ref="console"/>
+
+        </Root>
+
+    </Loggers>
+
+</Configuration>
