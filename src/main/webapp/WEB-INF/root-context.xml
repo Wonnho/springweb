@@ -43,5 +43,5 @@
 
 
 <mybatis:scan base-package="org.springweb.mapper"></mybatis:scan>
-
+<context:component-scan base-package="org.springweb.config"/>
 </beans>

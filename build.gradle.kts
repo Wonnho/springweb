@@ -79,7 +79,10 @@ dependencies {
     implementation("org.mybatis:mybatis:3.5.9")
     implementation("org.mybatis:mybatis-spring:2.0.7")
 
-}
+
+    //modelmapper and hibernate-validator
+    implementation("org.modelmapper:modelmapper:3.0.0")
+    implementation("org.hibernate.validator:hibernate-validator:6.2.1.Final")}
 
 
 tasks.test {
