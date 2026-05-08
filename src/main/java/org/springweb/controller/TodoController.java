@@ -1,18 +1,24 @@
 package org.springweb.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springweb.dto.TodoDTO;
+import org.springweb.service.TodoService;
 
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/todo")
 @Log4j2
+@RequiredArgsConstructor
 public class TodoController {
+
+    private final TodoService todoService;
+
 
     @RequestMapping("/list")
     public void list() {
@@ -43,6 +49,8 @@ public class TodoController {
         }
 
         log.info(todoDTO);
+
+        todoService.register(todoDTO);
         return "redirect:/todo/list";
     }
 
