@@ -1,4 +1,4 @@
-package springweb.mapper;
+package springweb.service;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -6,39 +6,26 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springweb.domain.TodoVO;
 import org.springweb.dto.TodoDTO;
-import org.springweb.mapper.TodoMapper;
 import org.springweb.service.TodoService;
 
 import java.time.LocalDate;
 
+
 @Log4j2
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/root-context.xml")
-
-public class TodoMapperTest {
-    @Autowired(required = false)
-    private TodoMapper todoMapper;
-
+public class TodoServiceTest {
+    @Autowired
+    private TodoService todoService;
 
     @Test
-    public void testGetTime() {
-
-        log.info(todoMapper.getTime());
-
-    }
-
-    @Test
-    public void testInsert() {
-        TodoVO todoVO=TodoVO.builder()
-                .title("String Test:  Édit de Nantes")
-                .dueDate(LocalDate.of(1598,4,13))
-                .writer("Henry 4")
+    public void testRegister() {
+        TodoDTO todoDTO=TodoDTO.builder()
+                .title("'transfer of VO to DTO' Test:")
+                .dueDate(LocalDate.of(2026,5,8))
+                .writer("coder")
                 .build();
-
-        todoMapper.insert(todoVO);
+        todoService.register(todoDTO);
     }
-
-
 }
