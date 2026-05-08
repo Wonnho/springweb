@@ -12,6 +12,7 @@ import org.springweb.mapper.TodoMapper;
 import org.springweb.service.TodoService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Log4j2
 @ExtendWith(SpringExtension.class)
@@ -41,4 +42,9 @@ public class TodoMapperTest {
     }
 
 
+    @Test
+    public void testSelectAll() {
+        List<TodoVO> voList=todoMapper.selectAll();
+        voList.forEach(vo -> log.info(vo));
+    }
 }
