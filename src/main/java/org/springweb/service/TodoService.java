@@ -10,4 +10,7 @@ public interface TodoService {
 
     List<TodoDTO> getAll();
 
+    TodoDTO getOne(Long tno);
+
+
 }

@@ -69,4 +69,11 @@ public class TodoController {
         log.info("todo list ..........");
         model.addAttribute("dtoList",todoService.getAll());
     }
+
+    @GetMapping("/read")
+    public void read(Long tno,Model model) {
+        TodoDTO todoDTO=todoService.getOne(tno);
+        log.info(("read a record.............."));
+        model.addAttribute("dto",todoDTO);
+    }
 }
