@@ -92,6 +92,22 @@
     </div>
 </form>
 
+<script>
+const formObj=document.querySelector("form")
+
+document.querySelector(".btn-danger").addEventListener("click",function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    formObj.action="/todo/remove"
+    formObj.method="post"
+
+    formObj.submit()
+    },false);
+   </script>
+
+   </div>
+
+
     <div class="row footer">
         <div class="col">
        <div class="row footer">
@@ -99,7 +115,6 @@
                  <footer class="py-1 my-1">
                      <p class="text-center text-muted">Footer</p>
                  </footer>
-           </div>
 
        </div>
         </div>
