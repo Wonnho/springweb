@@ -29,6 +29,8 @@
         <property name="formatters">
             <set>
                 <bean class="org.springweb.controller.formatter.LocalDateFormatter"/>
+                <bean class="org.springweb.controller.formatter.CheckboxFormatter"/>
+
             </set>
         </property>
     </bean>

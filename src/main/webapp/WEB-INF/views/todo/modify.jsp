@@ -64,7 +64,7 @@
                          <div class="input-group mb-3">
                                 <span class="input-group-text">DueDate</span>
                               <input type="date" name="dueDate" class="form-control"
-                              value=<c:out value="${dto.dueDate}"></c:out>>
+                              value='<c:out value="${dto.dueDate}"></c:out>'>
                               </div>
 
                           <div class="input-group mb-3">
@@ -91,6 +91,15 @@
 
     </div>
 </form>
+ </div>
+
+<script>
+const serverValidResult={}
+<c:forEach items="${errors}" var="error">
+ serverValidResult['${error.getField()}']='${error.defaultMessage}'
+ </c:forEach>
+ console.log(serverValidResult)
+</script>
 
 <script>
 const formObj=document.querySelector("form")
@@ -103,6 +112,24 @@ document.querySelector(".btn-danger").addEventListener("click",function(e) {
 
     formObj.submit()
     },false);
+
+document.querySelector(".btn-primary").addEventListener("click",function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    formObj.action="/todo/modify"
+    formObj.method="post"
+
+    formObj.submit()
+    },false);
+
+document.querySelector(".btn-secondary").addEventListener("click",function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    self.location="/todo/list"
+    },false);
+
    </script>
 
    </div>
@@ -118,19 +145,8 @@ document.querySelector(".btn-danger").addEventListener("click",function(e) {
 
        </div>
         </div>
-    </div>
 
 </div>
-
-<script>
-document.querySelector(".btn-primary").addEventListener("click",function(e){
-self.location="/todo/modify?tno="+${dto.tno}
-},false)
-
-document.querySelector(".btn-secondary").addEventListener("click",function(e){
-self.location="/todo/list"
-},false)
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
