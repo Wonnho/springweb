@@ -3,6 +3,7 @@ package org.springweb.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,11 +21,11 @@ public class TodoController {
     private final TodoService todoService;
 
 
-    @RequestMapping("/list")
-    public void list() {
-        log.info("todo list......");
-
-    }
+//    @RequestMapping("/list")
+//    public void list() {
+//        log.info("todo list......");
+//
+//    }
 
 
 //    @RequestMapping(value="/register",method= RequestMethod.GET)
@@ -61,5 +62,11 @@ public class TodoController {
         log.info("name: " +name);
         log.info("age: " +age);
 
+    }
+
+    @RequestMapping("/list")
+    public void list(Model model) {
+        log.info("todo list ..........");
+        model.addAttribute("dtoList",todoService.getAll());
     }
 }

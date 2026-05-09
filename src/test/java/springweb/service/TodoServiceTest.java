@@ -6,7 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springweb.domain.TodoVO;
 import org.springweb.dto.TodoDTO;
+import org.springweb.mapper.TodoMapper;
 import org.springweb.service.TodoService;
 
 import java.time.LocalDate;
@@ -27,5 +29,15 @@ public class TodoServiceTest {
                 .writer("coder")
                 .build();
         todoService.register(todoDTO);
+    }
+
+    @Autowired
+    private TodoMapper todoMapper;
+    @Test
+    public void testSelectOne() {
+        TodoVO todoVO= todoMapper.selectOne(3L);
+
+        log.info(todoVO);
+
     }
 }

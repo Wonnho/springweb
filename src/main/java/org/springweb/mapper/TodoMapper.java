@@ -12,4 +12,8 @@ public interface TodoMapper {
 
     List<TodoVO> selectAll();
 
+    // retrieve a specific item
+
+    TodoVO selectOne(Long tno);
+
 }
