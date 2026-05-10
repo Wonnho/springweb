@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springweb.domain.TodoVO;
+import org.springweb.dto.PageRequestDTO;
+import org.springweb.dto.PageResponseDTO;
 import org.springweb.dto.TodoDTO;
 import org.springweb.mapper.TodoMapper;
 import org.springweb.service.TodoService;
@@ -39,5 +41,19 @@ public class TodoServiceTest {
 
         log.info(todoVO);
 
+    }
+
+    @Test
+    public void testPaging() {
+        PageRequestDTO pageRequestDTO=PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .build();
+
+      PageResponseDTO<TodoDTO> responseDTO= todoService.getList(pageRequestDTO);
+
+      log.info(responseDTO);
+
+      responseDTO.getDtoList().stream().forEach(todoDTO -> log.info(todoDTO));
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springweb.dto.PageRequestDTO;
 import org.springweb.dto.TodoDTO;
 import org.springweb.service.TodoService;
 
@@ -64,10 +65,22 @@ public class TodoController {
 
     }
 
-    @RequestMapping("/list")
-    public void list(Model model) {
-        log.info("todo list ..........");
-        model.addAttribute("dtoList",todoService.getAll());
+//    @RequestMapping("/list")
+//    public void list(Model model) {
+//        log.info("todo list ..........");
+//        model.addAttribute("dtoList",todoService.getAll());
+//    }
+
+    @GetMapping("/list")
+    public void list(@Valid PageRequestDTO pageRequestDTO,BindingResult bindingResult, Model model) {
+        log.info(pageRequestDTO);
+
+        if(bindingResult.hasErrors()) {
+            pageRequestDTO=PageRequestDTO.builder().build();
+
+        }
+        model.addAttribute("responseDTO",todoService.getList(pageRequestDTO));
+
     }
 
     @GetMapping({"/read","/modify"})

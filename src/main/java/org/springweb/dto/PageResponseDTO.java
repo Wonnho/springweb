@@ -7,6 +7,8 @@ import lombok.ToString;
 import java.util.List;
 
 
+@Getter
+@ToString
 public class PageResponseDTO<E> {
 
 
@@ -20,14 +22,12 @@ private int end;
 private boolean prev;
 private boolean next;
 
-@Getter
-@ToString
 private List<E> dtoList;
 
     @Builder(builderMethodName = "withAll")
     public PageResponseDTO(PageRequestDTO pageRequestDTO,List<E> dtoList,int total) {
-        this.page=PageRequestDTO.getPage();
-        this.page=PageRequestDTO.getSize();
+        this.page=pageRequestDTO.getPage();
+        this.page=pageRequestDTO.getSize();
 
         this.total=total;
         this.dtoList=dtoList;
