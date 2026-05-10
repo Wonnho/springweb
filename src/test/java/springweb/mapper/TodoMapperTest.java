@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springweb.domain.TodoVO;
+import org.springweb.dto.PageRequestDTO;
 import org.springweb.dto.TodoDTO;
 import org.springweb.mapper.TodoMapper;
 import org.springweb.service.TodoService;
@@ -47,4 +48,16 @@ public class TodoMapperTest {
         List<TodoVO> voList=todoMapper.selectAll();
         voList.forEach(vo -> log.info(vo));
     }
+@Test
+    public void testSelectList() {
+    PageRequestDTO pageRequestDTO=PageRequestDTO.builder()
+            .page(1)
+            .size(10)
+            .build();
+
+        List<TodoVO> voList=todoMapper.selectList(pageRequestDTO);
+
+        voList.forEach(vo -> log.info(vo));
+}
+
 }

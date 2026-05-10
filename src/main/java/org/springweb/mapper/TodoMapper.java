@@ -1,6 +1,7 @@
 package org.springweb.mapper;
 
 import org.springweb.domain.TodoVO;
+import org.springweb.dto.PageRequestDTO;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public interface TodoMapper {
     void delete(Long tno);
 
     void update(TodoVO todoVO);
+
+ List<TodoVO> selectList(PageRequestDTO pageRequestDTO);
 
 
 }

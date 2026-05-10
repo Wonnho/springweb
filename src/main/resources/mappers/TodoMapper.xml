@@ -30,4 +30,8 @@
         update tbl_todo set title=#{title} , dueDate=#{dueDate}, done=#{done}
         where tno=#{tno}
     </update>
+
+    <select id="selectList" resultType="org.springweb.domain.TodoVO">
+        select * from tbl_todo order by tno desc limit #{skip}, #{size}
+    </select>
 </mapper>
