@@ -62,7 +62,8 @@
                                       <c:forEach items="${responseDTO.dtoList}" var="dto">
                                         <tr>
                                           <th scope="row"><c:out value="${dto.tno}"/> </th>
-                                          <td><a href="/todo/read?tno=${dto.tno}" class="text-decoration-none">
+                                          <td><a href="/todo/read?tno=${dto.tno}&${pageRequestDTO.link}"
+                                           class="text-decoration-none" data-tno="${dot.tno}">
                                           <c:out value="${dto.title}"/></a></td>
                                           <td><c:out value="${dto.writer}"/></td>
                                           <td><c:out value="${dto.dueDate}"/></td>
@@ -71,7 +72,42 @@
                                        </c:forEach>
                                       </tbody>
                                     </table>
-                                </div>
+                                    <div class="float-end">
+                                    <ul class="pagination flex-wrap">
+                                    <c:if test="${responseDTO.prev}">
+                                    <li class="page-item">
+                                    <a class="page-link" data-num="${responseDTO.start-1}">Previous</a>
+                                    </li>
+                                    </c:if>
+
+                                    <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
+                                   <%-- 내부 조건을 작은따옴표로 변경하고, 마지막에 누락된 큰따옴표 추가 --%>
+                                       <li class="page-item ${responseDTO.page == num ? 'active' : ''}">
+                                       <a class="page-link" data-num="${num}">${num}</a></li>
+                                    </c:forEach>
+
+                                     <c:if test="${responseDTO.next}">
+                                        <li class="page-item">
+                                        <a class="page-link" data-num="${responseDTO.end+1}">Next</a>
+                                        </li>
+                                        </c:if>
+                                    </ul>
+<script>
+document.querySelector(".pagination").addEventListener("click",function(e) {
+e.preventDefault()
+e.stopPropagation()
+
+    const target=e.target
+
+        if(target.tagName !== 'A') {
+        return
+        }
+    const num=target.getAttribute("data-num")
+    self.location=`/todo/list?page=\${num}`
+    },false)
+
+</script>
+                                   </div>
 
             </div>
 

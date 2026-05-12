@@ -30,4 +30,19 @@ public class PageRequestDTO {
     public int getSkip() {
         return (page -1)*10;
     }
+
+    private String link;
+
+    public  String getLink() {
+        if(link==null) {
+
+            StringBuilder stringBuilder =new StringBuilder();
+            stringBuilder.append("page=" +this.page);
+            stringBuilder.append("&size=" + this.size);
+            link=stringBuilder.toString();
+        }
+        return link;
+    }
+
+
 }
