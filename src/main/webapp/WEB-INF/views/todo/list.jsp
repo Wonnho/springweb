@@ -106,6 +106,7 @@ e.stopPropagation()
     self.location=`/todo/list?page=\${num}`
     },false)
 
+
 </script>
                                    </div>
 
