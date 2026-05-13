@@ -47,7 +47,10 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-core:2.17.2")
 
     // 3. SLF4J와 Log4j2를 연결하는 바인딩 (Log4j2를 SLF4J 구현체로 사용)
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.17.2")
+  //  implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.17.2")
+
+
+    //implementation("org.slf4j:slf4j-simple:2.0.9")
 
 
     //jstl

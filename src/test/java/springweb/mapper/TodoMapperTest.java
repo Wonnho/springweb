@@ -60,4 +60,22 @@ public class TodoMapperTest {
         voList.forEach(vo -> log.info(vo));
 }
 
+@Test
+    public void testSelectSearch() {
+        PageRequestDTO pageRequestDTO=PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .types(new String[]{"t","w"})
+                .keyword("search")
+              //  .done(true)
+                .from(LocalDate.of(2026,5,1))
+                .to(LocalDate.of(2026,5,15))
+                .build();
+
+
+        List<TodoVO> voList=todoMapper.selectList(pageRequestDTO);
+        voList.forEach(vo -> log.info("Value Object "+vo));
+        log.info("count: "+todoMapper.getCount(pageRequestDTO));
+    }
+
 }
