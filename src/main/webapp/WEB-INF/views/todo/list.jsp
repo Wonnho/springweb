@@ -9,6 +9,7 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
 <div class="container-fluid">
 
@@ -36,12 +37,43 @@
         </div>
     </div>
 
+<div class="row content">
+<div class="col">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">Search</h5>
+<form action="/todo/list" method="get">
+
+<input type="hidden" name="size" value="${pageRequestDTO.size}">
+<div class="mb-3">
+<input type="checkbox" name="done" ${pageRequestDTO.done?"checked":""}>done
+</div>
+<div class="mb-3">
+
+<input type="checkbox" name="types" value="t" ${pageRequestDTO.checkType('t') ? 'checked' : ''}> 제목
+<input type="checkbox" name="types" value="w" ${pageRequestDTO.checkType('w') ? 'checked' : ''}> 작성자
+<input type="text" name="keyword" class="form-control" value='<c:out value="${pageRequestDTO.keyword}"/>'>
+</div>
+
+<div class="input-group mb-3 dueDateDiv">
+    <input type="date" name="from" class="form-control" value="${pageRequestDTO.from}">
+    <input type="date" name="to" class="form-control"value="${pageRequestDTO.to}">
+</div>
+<div class="input-group mb-3">
+<div class="float-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+    <button class="btn btn-info clearBtn" type="reset">Clear</button>
+     </div>
+     </div>
+     </form>
+     <div>
+     </div>
+     </div>
+     </div>
+
     <div class="row content">
-
         <div class="col">
-
             <div class="card">
-
                 <div class="card-header">
                     Featured
                 </div>
@@ -63,7 +95,7 @@
                                         <tr>
                                           <th scope="row"><c:out value="${dto.tno}"/> </th>
                                           <td><a href="/todo/read?tno=${dto.tno}&${pageRequestDTO.link}"
-                                           class="text-decoration-none" data-tno="${dot.tno}">
+                                           class="text-decoration-none" data-tno="${dto.tno}">
                                           <c:out value="${dto.title}"/></a></td>
                                           <td><c:out value="${dto.writer}"/></td>
                                           <td><c:out value="${dto.dueDate}"/></td>
@@ -103,8 +135,15 @@ e.stopPropagation()
         return
         }
     const num=target.getAttribute("data-num")
-    self.location=`/todo/list?page=\${num}`
+    self.location=`/todo/list?page=${num}`
     },false)
+
+    document.querySelector(".clearBtn").addEventListener("click",function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+        self.location='/todo/list'
+        },false)
 
 
 </script>
