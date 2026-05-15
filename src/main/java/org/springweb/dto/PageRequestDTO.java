@@ -23,13 +23,13 @@ public class PageRequestDTO {
 
 
     @Builder.Default
-    @Min(value = 1)
+    @Min(value = 10)
     @Max(value = 100)
     @Positive
     private int size = 10;
 
     public int getSkip() {
-        return (page - 1) * size;
+        return (page - 1) *10;
     }
 
     private String link;

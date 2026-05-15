@@ -125,30 +125,25 @@
                                         </c:if>
                                     </ul>
 <script>
-document.querySelector(".pagination").addEventListener("click",function(e) {
-e.preventDefault()
-e.stopPropagation()
+ document.querySelector(".pagination").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
 
-    const target=e.target
+        const target = e.target
 
         if(target.tagName !== 'A') {
-        return
+            return
         }
-    const num=target.getAttribute("data-num")
-    const formObj=document.querySelector("form")
-    let pageInput=formObj.querySelector("input[name='page']")
+        const num = target.getAttribute("data-num")
 
-    if(!pageInput) {
-        pageInput=document.createElement("input")
-        pageInput.type="hidden"
-        pageInput.name="page"
-        formObj.appendChild(pageInput)
-    }
+        const formObj = document.querySelector("form")
 
-    pageInput.value=num
-   // self.location=`/todo/list?page=${num}`
-    formObj.submit()
+        formObj.innerHTML += `<input type='hidden' name='page' value='\${num}'>`
+
+        formObj.submit();
+
     },false)
+
 
     document.querySelector(".clearBtn").addEventListener("click",function(e) {
     e.preventDefault()
@@ -156,7 +151,6 @@ e.stopPropagation()
 
         self.location='/todo/list'
         },false)
-
 
 </script>
                                    </div>
