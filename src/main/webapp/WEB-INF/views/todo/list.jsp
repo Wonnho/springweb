@@ -135,7 +135,19 @@ e.stopPropagation()
         return
         }
     const num=target.getAttribute("data-num")
-    self.location=`/todo/list?page=${num}`
+    const formObj=document.querySelector("form")
+    let pageInput=formObj.querySelector("input[name='page']")
+
+    if(!pageInput) {
+        pageInput=document.createElement("input")
+        pageInput.type="hidden"
+        pageInput.name="page"
+        formObj.appendChild(pageInput)
+    }
+
+    pageInput.value=num
+   // self.location=`/todo/list?page=${num}`
+    formObj.submit()
     },false)
 
     document.querySelector(".clearBtn").addEventListener("click",function(e) {

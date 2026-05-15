@@ -29,7 +29,7 @@ public class PageRequestDTO {
     private int size = 10;
 
     public int getSkip() {
-        return (page - 1) * 10;
+        return (page - 1) * size;
     }
 
     private String link;
